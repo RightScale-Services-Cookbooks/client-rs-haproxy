@@ -39,9 +39,11 @@ updated_haproxy_config = Mash.new(
     }
   },
    'backend' => {
-      # http-check expect
-      'http-check expect'=> 'status 401|30*|20*' 
-    }
+      'servers' => {
+        # http-check expect
+        'http-check expect'=> 'status 401|30*|20*'
+      }
+  }
 )
 
 include_recipe 'rs-haproxy::default'

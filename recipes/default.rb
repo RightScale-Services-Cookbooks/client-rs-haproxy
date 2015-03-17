@@ -29,11 +29,6 @@ updated_haproxy_config = Mash.new(
     #'http-check expect'=> 'status 200' # worked
     # 'http-check expect'=> 'status 401|30*|20*'  # worked but is not in backend
   },
-  
- 'backend' => {
-      # http-check expect
-      'http-check expect'=> 'status 401|30*|20*' 
-    },
     
   'frontend' => {
     'all_requests' => {
@@ -42,7 +37,12 @@ updated_haproxy_config = Mash.new(
       # rspidel entries
       'rspidel' => ['^Set-cookie:\ IP=', '^Server:']
     }
-  }
+  },
+   
+   'backend' => {
+      # http-check expect
+      'http-check expect'=> 'status 401|30*|20*' 
+    },
 )
 
 include_recipe 'rs-haproxy::default'

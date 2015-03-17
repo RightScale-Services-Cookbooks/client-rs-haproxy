@@ -37,7 +37,8 @@ updated_haproxy_config = Mash.new(
       #'http-check' => 'expect'=> 'status' =>['401|30*|20*']
       #"http-check" => ['expect status 401|30*|20*']
       #'http-check expect status'=> '200'
-      'http-\check expect status'=> '200'
+      #'http-\check expect status'=> '200'
+      "http-check expect status"=> "200"
     }
   }
 )

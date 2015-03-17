@@ -38,11 +38,10 @@ updated_haproxy_config = Mash.new(
       'rspidel' => ['^Set-cookie:\ IP=', '^Server:']
     }
   },
-   
    'backend' => {
       # http-check expect
       'http-check expect'=> 'status 401|30*|20*' 
-    },
+    }
 )
 
 include_recipe 'rs-haproxy::default'

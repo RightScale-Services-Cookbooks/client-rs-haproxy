@@ -29,10 +29,11 @@ updated_haproxy_config = Mash.new(
     #'http-check expect'=> 'status 200' # worked
     # 'http-check expect'=> 'status 401|30*|20*'  # worked but is not in backend
   },
-   'backend' => {
+  
+ 'backend' => {
       # http-check expect
       'http-check expect'=> 'status 401|30*|20*' 
-    }
+    },
     
   'frontend' => {
     'all_requests' => {

@@ -26,7 +26,7 @@ updated_haproxy_config = Mash.new(
     'mode' => 'http',
     'option' => ['httplog', 'dontlognull', 'redispatch'],
     'balance' => node['haproxy']['balance_algorithm'],
-    'http-check expect'=> 'status 401|30*|20*'  # worked but is not in backend
+    'http-check expect'=> 'status 401\|30\*|20\*'  # worked but is not in backend
   },
     
   'frontend' => {

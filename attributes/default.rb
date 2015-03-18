@@ -1,8 +1,8 @@
-node.default[:haproxy][:config][:defaults]['http-check expect'] = 'status 401\|30\*|20\*'
+node.default[:haproxy][:config][:node.defaults]['http-check expect'] = 'status 401\|30\*|20\*'
 
 #
-# Cookbook Name:: rsc_rs-haproxy
-# Attribute:: default
+# Cookbook Name:: client-rs-haproxy
+# Attribute:: node.default
 #
 # Copyright (C) 2014 RightScale, Inc.
 #
@@ -19,16 +19,16 @@ node.default[:haproxy][:config][:defaults]['http-check expect'] = 'status 401\|3
 # limitations under the License.
 #
 # Packages to install. Example: pkg1, pkg2=2.0
-default['rsc_rs-haproxy']['listen_port'] = 8080
+node.default['client-rs-haproxy']['listen_port'] = 8080
 # Application bind IP type - 'private' or 'public'
-default['rsc_rs-haproxy']['bind_network_interface'] = 'private'
+node.default['client-rs-haproxy']['bind_network_interface'] = 'private'
 # The name of the application. Example: hello_world
-default['rsc_rs-haproxy']['application_name'] = nil
+node.default['client-rs-haproxy']['application_name'] = nil
 # The name of the template that will be rendered to create the local settings file
-default['rsc_rs-haproxy']['settings_template'] = nil
+node.default['client-rs-haproxy']['settings_template'] = nil
 # The virtual host path served by the application server
-default['rsc_rs-haproxy']['vhost_path'] = nil
+node.default['client-rs-haproxy']['vhost_path'] = nil
 # Remote recipe to attach application server to load balancer
-default['rsc_rs-haproxy']['remote_attach_recipe'] = 'client-rs-haproxy::frontend'
+node.default['client-rs-haproxy']['remote_attach_recipe'] = 'client-rs-haproxy::frontend'
 # Remote recipe to detach application server from load balancer
-default['rsc_rs-haproxy']['remote_detach_recipe'] = 'client-rs-haproxy::frontend'
+node.default['client-rs-haproxy']['remote_detach_recipe'] = 'client-rs-haproxy::frontend'

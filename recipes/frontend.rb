@@ -16,13 +16,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 marker "recipe_start_rightscale" do
-template "rightscale_audit_entry.erb"
+  template "rightscale_audit_entry.erb"
 end
+
 include_recipe 'rightscale_tag::default'
+
 class Chef::Recipe
-include Rightscale::RightscaleTag
+  include Rightscale::RightscaleTag
 end
+
 # Find all application servers in the deployment
 app_servers = find_application_servers(node)
 # If 'find_application_servers' returns empty, there may be an issue with retrieving machine tags.
@@ -32,8 +36,8 @@ app_servers = find_application_servers(node)
 # retrieving machine tags, the current config with existing application servers will continue
 # to function as expected.
 if app_servers.empty?
-log 'No application servers found. No changes will be made.'
-return
+  log 'No application servers found. No changes will be made.'
+  return
 end
 # Group application servers by pools.
 app_server_pools = group_servers_by_application_name(app_servers)

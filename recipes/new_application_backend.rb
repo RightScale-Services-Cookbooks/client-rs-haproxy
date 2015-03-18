@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rsc_rs-haproxy
+# Cookbook Name:: client-rs-haproxy
 # Recipe:: application_backend
 #
 # Copyright (C) 2014 RightScale, Inc.
@@ -26,16 +26,16 @@ class Chef::Recipe
 end
 
 # Validate application name
-RsApplicationPhp::Helper.validate_application_name(node['rsc_rs-haproxy']['application_name'])
+RsApplicationPhp::Helper.validate_application_name(node['client-rs-haproxy']['application_name'])
 
 # Check if there is at least one load balancer in the deployment serving the application name
-if find_load_balancer_servers(node, node['rsc_rs-haproxy']['application_name']).empty?
- raise "No load balancer servers found in the deployment serving #{node['rsc_rs-haproxy']['application_name']}!"
+if find_load_balancer_servers(node, node['client-rs-haproxy']['application_name']).empty?
+ raise "No load balancer servers found in the deployment serving #{node['client-rs-haproxy']['application_name']}!"
 end
 
 # Put this backend into consideration during tag queries
 log 'Tagging the application server to put it into consideration during tag queries...'
-machine_tag "application:active_#{node['rsc_rs-haproxy']['application_name']}=true" do
+machine_tag "application:active_#{node['client-rs-haproxy']['application_name']}=true" do
   action :create
 end
 
@@ -46,24 +46,24 @@ file remote_request_json do
  content ::JSON.pretty_generate({
    'remote_recipe' => {
 	'application_bind_ip' => RsApplicationPhp::Helper.get_bind_ip_address(node),
-	'application_bind_port' => node['rsc_rs-haproxy']['listen_port'],
+	'application_bind_port' => node['client-rs-haproxy']['listen_port'],
 	'application_server_id' => node['rightscale']['instance_uuid'],
-	'pool_name' => node['rsc_rs-haproxy']['application_name'],
-	'vhost_path' => node['rsc_rs-haproxy']['vhost_path'],
+	'pool_name' => node['client-rs-haproxy']['application_name'],
+	'vhost_path' => node['client-rs-haproxy']['vhost_path'],
 	'application_action' => 'attach'
 }
 })
 end
 
 # Send remote recipe request
-log "Running recipe '#{node['rsc_rs-haproxy']['remote_attach_recipe']}' on all load balancers" +
-" with tags 'load_balancer:active_#{node['rsc_rs-haproxy']['application_name']}=true'..."
+log "Running recipe '#{node['client-rs-haproxy']['remote_attach_recipe']}' on all load balancers" +
+" with tags 'load_balancer:active_#{node['client-rs-haproxy']['application_name']}=true'..."
 
 execute 'Attach to load balancer(s)' do
 command [
 	'rs_run_recipe',
-	'--name', node['rsc_rs-haproxy']['remote_attach_recipe'],
-	'--recipient_tags', "load_balancer:active_#{node['rsc_rs-haproxy']['application_name']}=true",
+	'--name', node['client-rs-haproxy']['remote_attach_recipe'],
+	'--recipient_tags', "load_balancer:active_#{node['client-rs-haproxy']['application_name']}=true",
 	'--json', remote_request_json
   ]
 end

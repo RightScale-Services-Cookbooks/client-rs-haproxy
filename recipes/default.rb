@@ -42,7 +42,7 @@ updated_haproxy_config = Mash.new(
 include_recipe 'rs-haproxy::default'
 #include_recipe 'rsc_rs-haproxy::default'
 
-rewind 'haproxy[set up haproxy.cnf]' do
-  config updated_haproxy_config
-  action :create
-end
+#rewind 'haproxy[set up haproxy.cnf]' do
+#  config updated_haproxy_config
+#  action :create
+#end

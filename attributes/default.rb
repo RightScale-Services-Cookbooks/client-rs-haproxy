@@ -29,6 +29,6 @@ default['rsc_rs-haproxy']['settings_template'] = nil
 # The virtual host path served by the application server
 default['rsc_rs-haproxy']['vhost_path'] = nil
 # Remote recipe to attach application server to load balancer
-default['rsc_rs-haproxy']['remote_attach_recipe'] = 'rs-haproxy::frontend'
+default['rsc_rs-haproxy']['remote_attach_recipe'] = 'client-rs-haproxy::frontend'
 # Remote recipe to detach application server from load balancer
-default['rsc_rs-haproxy']['remote_detach_recipe'] = 'rs-haproxy::frontend'
+default['rsc_rs-haproxy']['remote_detach_recipe'] = 'client-rs-haproxy::frontend'

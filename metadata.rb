@@ -12,6 +12,7 @@ depends 'collectd', '~> 1.1.0'
 depends 'rightscale_tag', '~> 1.0.3'
 depends 'rs-base', '~> 1.1.3'
 depends 'rs-haproxy', '~> 1.1.3'
+depends 'rs-application_php'
 
 recipe 'client-rs-haproxy::default', 'Runs rs-haproxy::default with custom changes to config.'
 recipe 'client-rs-haproxy::frontend', 'Runs rs-haproxy::frontend'

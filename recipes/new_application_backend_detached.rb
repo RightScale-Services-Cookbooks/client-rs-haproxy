@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rs-application_php
+# Cookbook Name:: rsc_rs-haproxy
 # Recipe:: application_backend_detached
 #
 # Copyright (C) 2014 RightScale, Inc.
@@ -26,11 +26,11 @@ class Chef::Recipe
 end
 
 # Validate application name
-RsApplicationPhp::Helper.validate_application_name(node['rs-application_php']['application_name'])
+RsApplicationPhp::Helper.validate_application_name(node['rsc_rs-haproxy']['application_name'])
 
 # Put this backend out of consideration during tag queries
 log 'Tagging the application server to take it out of consideration during tag queries...'
-machine_tag "application:active_#{node['rs-application_php']['application_name']}=false" do
+machine_tag "application:active_#{node['rsc_rs-haproxy']['application_name']}=false" do
  action :create
 end
 
@@ -41,21 +41,21 @@ file remote_request_json do
  content ::JSON.pretty_generate({
 	'remote_recipe' => {
 	  'application_server_id' => node['rightscale']['instance_uuid'],
-	  'pool_name' => node['rs-application_php']['application_name'],
+	  'pool_name' => node['rsc_rs-haproxy']['application_name'],
 	  'application_action' => 'detach'
 	}
 })
 end
 
 # Send remote recipe request
-log "Running recipe '#{node['rs-application_php']['remote_detach_recipe']}' on all load balancers" +
-" with tags 'load_balancer:active_#{node['rs-application_php']['application_name']}=true'..."
+log "Running recipe '#{node['rsc_rs-haproxy']['remote_detach_recipe']}' on all load balancers" +
+" with tags 'load_balancer:active_#{node['rsc_rs-haproxy']['application_name']}=true'..."
 
 execute 'Detach from load balancer(s)' do
   command [
 	'rs_run_recipe',
-	'--name', node['rs-application_php']['remote_detach_recipe'],
-	'--recipient_tags', "load_balancer:active_#{node['rs-application_php']['application_name']}=true",
+	'--name', node['rsc_rs-haproxy']['remote_detach_recipe'],
+	'--recipient_tags', "load_balancer:active_#{node['rsc_rs-haproxy']['application_name']}=true",
 	'--json', remote_request_json
 ]
 end

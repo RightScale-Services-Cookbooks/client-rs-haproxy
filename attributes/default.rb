@@ -26,7 +26,8 @@ default['rs-application_php']['bind_network_interface'] = 'private'
 default['rs-application_php']['application_name'] = nil
 # The name of the template that will be rendered to create the local settings file
 default['rs-application_php']['settings_template'] = nil
-
+# The virtual host path served by the application server
+default['rs-application_php']['vhost_path'] = nil
 # Remote recipe to attach application server to load balancer
 default['rs-application_php']['remote_attach_recipe'] = 'rs-haproxy::frontend'
 # Remote recipe to detach application server from load balancer

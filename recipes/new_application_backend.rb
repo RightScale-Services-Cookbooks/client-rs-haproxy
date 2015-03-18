@@ -49,6 +49,7 @@ file remote_request_json do
 	'application_bind_port' => node['rs-application_php']['listen_port'],
 	'application_server_id' => node['rightscale']['instance_uuid'],
 	'pool_name' => node['rs-application_php']['application_name'],
+	'vhost_path' => node['rs-application_php']['vhost_path'],
 	'application_action' => 'attach'
 }
 })

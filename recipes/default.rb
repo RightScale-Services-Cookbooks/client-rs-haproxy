@@ -26,7 +26,7 @@ updated_haproxy_config = Mash.new(
     'mode' => 'http',
     'option' => ['httplog', 'dontlognull', 'redispatch'],
     'balance' => node['haproxy']['balance_algorithm'],
-    'http-check expect'=> 'status 401\|30\*|20\*',  # worked but is not in backend
+    #'http-check expect'=> 'status 401\|30\*|20\*',  # worked but is not in backend
   },
     
   'frontend' => {
@@ -41,7 +41,7 @@ updated_haproxy_config = Mash.new(
 
 include_recipe 'rs-haproxy::default'
 
-rewind 'haproxy[set up haproxy.cnf]' do
-  config updated_haproxy_config
-  action :create
-end
+#rewind 'haproxy[set up haproxy.cnf]' do
+#  config updated_haproxy_config
+#  action :create
+#end

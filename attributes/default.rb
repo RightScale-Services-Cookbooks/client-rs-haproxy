@@ -1,0 +1,1 @@
+node.default[:haproxy][:config][:defaults]['http-check expect'] = 'status 401\|30\*|20\*'

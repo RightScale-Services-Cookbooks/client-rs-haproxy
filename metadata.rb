@@ -23,3 +23,7 @@ recipe 'client-rs-haproxy::schedule', 'Configure cron to periodically run rs-hap
 attribute 'client-rs-haproxy/application_name',
   :display_name => 'application_name',
   :required => 'required'
+
+attribute 'client-rs-haproxy/listen_port',
+  :display_name => 'listen_port',
+  :required => 'required'

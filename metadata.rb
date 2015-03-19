@@ -17,6 +17,8 @@ recipe 'client-rs-haproxy::default', 'Runs rs-haproxy::default with custom chang
 recipe 'client-rs-haproxy::frontend', 'Runs rs-haproxy::frontend'
 recipe 'client-rs-haproxy::new_application_backend', 'Attaches the application server to the load balancer'
 recipe 'client-rs-haproxy::new_application_backend_detached', 'Detaches the application server from a load balancer'
+recipe 'client-rs-haproxy::schedule', 'Configure cron to periodically run rs-haproxy::frontend.'
+
 
 attribute 'client-rs-haproxy/application_name',
   :display_name => 'application_name',

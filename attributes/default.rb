@@ -1,4 +1,4 @@
-node.force_override[:haproxy][:config][:defaults]['http-check expect'] = 'status 401|30*|20*'
+node.force_override[:haproxy][:config][:defaults]['http-check expect'] = 'rstatus /401|30*|20*/'
 # Packages to install. Example: pkg1, pkg2=2.0
 node.default['client-rs-haproxy']['listen_port'] = 8080
 # Application bind IP type - 'private' or 'public'

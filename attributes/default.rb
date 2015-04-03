@@ -1,1 +1,1 @@
-node.force_override['haproxy']['x_forwarded_for'] = true
+node.default[:haproxy][:config][:defaults]['options'] << 'x_forwarded_for'

@@ -8,6 +8,7 @@ version          '0.1.1'
 
 depends 'marker'
 depends 'rs-haproxy', '~> 1.1.4'
+depends 'haproxy'
 
 recipe 'client-rs-haproxy::default', 'Runs rs-haproxy::default with custom changes to config.'
 recipe 'client-rs-haproxy::frontend', 'Runs rs-haproxy::frontentd with custom changes'

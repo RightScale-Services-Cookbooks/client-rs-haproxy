@@ -2,4 +2,4 @@ site :opscode
 
 metadata
 
-cookbook "rs-haproxy", github: "RightScale-Services-Cookbooks/rs-haproxy.git", branch: "RSPS-Fixes"
+cookbook "rs-haproxy", git: "git://github.com/RightScale-Services-Cookbooks/rs-haproxy.git", branch: 'RSPS-Fixes'

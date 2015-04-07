@@ -18,3 +18,15 @@ attribute 'haproxy/config/defaults/timeout/client',
   :description => 'haproxy client timeout',
   :required => 'optional',
   :default => '20s'
+
+attribute 'haproxy/config/defaults/timeout/server',
+  :display_name => 'haproxy server timeout',
+  :description => 'haproxy server timeout',
+  :required => 'optional',
+  :default => '20s'
+
+attribute 'haproxy/config/defaults/timeout/connect',
+  :display_name => 'haproxy connect timeout',
+  :description => 'haproxy connect timeout',
+  :required => 'optional',
+  :default => '20s'

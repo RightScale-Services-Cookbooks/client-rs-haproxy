@@ -13,7 +13,7 @@ depends 'haproxy'
 recipe 'rsc_rs-haproxy::default', 'Runs rs-haproxy::default with custom changes to config.'
 recipe 'rsc_rs-haproxy::frontend', 'Runs rs-haproxy::frontentd with custom changes'
 
-attibute 'haproxy/config/defaults/timeout/client',
+attribute 'haproxy/config/defaults/timeout/client',
   :display_name => 'haproxy client timeout',
   :description => 'haproxy client timeout',
   :required => 'optional',

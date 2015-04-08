@@ -8,4 +8,4 @@ marker "recipe_start_rightscale" do
 end
 
 include_recipe 'rs-haproxy::frontend'
-include_recipe 'rs-haproxy::default'
+include_recipe 'rsc_rs-haproxy::default'

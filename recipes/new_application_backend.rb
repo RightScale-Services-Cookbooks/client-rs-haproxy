@@ -46,7 +46,7 @@ file remote_request_json do
  content ::JSON.pretty_generate({
    'remote_recipe' => {
 	#'application_bind_ip' => RsApplicationPhp::Helper.get_bind_ip_address(node),
-	'application_bind_ip' => node['client-rs-haproxy']['private_ips'][0],
+	'application_bind_ip' => node['cloud']['private_ips'][0],
 	'application_bind_port' => node['client-rs-haproxy']['listen_port'],
 	'application_server_id' => node['rightscale']['instance_uuid'],
 	'pool_name' => node['client-rs-haproxy']['application_name'],

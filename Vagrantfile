@@ -6,14 +6,21 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.hostname = "rsc-skeleton-cookbook-berkshelf"
+  config.vm.hostname = "rsc-haproxy-berkshelf"
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "Berkshelf-CentOS-6.3-x86_64-minimal"
+  # Every Vagrant virtual environment requires a box to build off of.   
+  #config.vm.box = "opscode-ubuntu-12.04"
+  config.vm.box = "opscode-ubuntu-14.04"
+  #config.vm.box ="opscode-centos-6.6"
+  #config.vm.box ="opscode-centos-7.0"
 
+  
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box"
+  #config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.boxx"
+  config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box"
+  #config.vm.box_url ="http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.6_chef-provisionerless.box"
+  #config.vm.box_url="http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.0_chef-provisionerless.box"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -52,15 +59,21 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
-  config.ssh.max_tries = 40
-  config.ssh.timeout   = 120
+#  config.ssh.max_tries = 40
+#  config.ssh.timeout   = 120
 
   # The path to the Berksfile to use with Vagrant Berkshelf
   # config.berkshelf.berksfile_path = "./Berksfile"
 
-  # Enabling the Berkshelf plugin. To enable this globally, add this configuration
+# Enabling the Berkshelf plugin. To enable this globally, add this configuration
   # option to your ~/.vagrant.d/Vagrantfile file
   config.berkshelf.enabled = true
+
+  # An array of symbols representing groups of cookbook described in the Vagrantfile
+  # to exclusively install and copy to Vagrant's shelf.
+  # config.berkshelf.only = []
+
+  config.omnibus.chef_version = '11.6.0'
 
   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to exclusively install and copy to Vagrant's shelf.
@@ -72,15 +85,16 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      :mysql => {
-        :server_root_password => 'rootpass',
-        :server_debian_password => 'debpass',
-        :server_repl_password => 'replpass'
-      }
+      cloud:{
+        provider: 'vagrant',
+        public_ips: ['33.33.33.10'],
+        private_ips: ['10.0.0.1']
+      },
     }
-
     chef.run_list = [
-        "recipe[rsc_skeleton_cookbook::default]"
+      "recipe[rsc_rs-haproxy::default]",
+      "recipe[rsc_rs-haproxy::frontend]",
+      "recipe[rsc_rs-haproxy::schedule]"
     ]
   end
 end

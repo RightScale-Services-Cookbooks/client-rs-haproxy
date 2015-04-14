@@ -6,7 +6,7 @@ package "python" do
   action :install
 end
 
-remote_file "/tmp/hatop-0.7.7.tar.gz" do
+remote_file "#{Chef::Config[:file_cache_path]}/hatop-0.7.7.tar.gz" do
   source "http://hatop.googlecode.com/files/hatop-0.7.7.tar.gz"
   owner "root"
   group "root"
@@ -16,7 +16,7 @@ end
 
 bash "extract and install" do
   code <<-EOF
-    tar -xvzf /tmp/hatop-0.7.7.tar.gz
+    tar -xvzf #{Chef::Config[:file_cache_path]}/hatop-0.7.7.tar.gz -C /tmp
     cd /tmp/hatop-0.7.7
     install -m 755 bin/hatop /usr/local/bin
     install -m 644 man/hatop.1 /usr/local/share/man/man1

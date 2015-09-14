@@ -2,10 +2,9 @@ site :opscode
 
 metadata
 
-cookbook 'rs-haproxy', github: 'rightscale-cookbooks/rs-haproxy', tag: 'v1.1.3'
-cookbook 'haproxy', github: 'rightscale-cookbooks-contrib/haproxy', branch: 'rs-fixes'
-cookbook 'collectd', github: 'rightscale-cookbooks-contrib/chef-collectd', branch: 'generalize_install_for_both_centos_and_ubuntu'
-cookbook 'rs-base', github: 'rightscale-cookbooks/rs-base', tag: 'v1.1.2'
+cookbook "rs-haproxy", git: "git://github.com/RightScale-Services-Cookbooks/rs-haproxy.git", branch: 'RSPS-Fixes'
+cookbook "collectd", git: "git://github.com/rightscale-cookbooks-contrib/chef-collectd.git", branch: 'generalize_install_for_both_centos_and_ubuntu'
+cookbook "rs-base", git: "git://github.com/rightscale-cookbooks/rs-base.git", branch: 'master'
 
 group :integration do
   cookbook 'apt', '~> 2.6.0'

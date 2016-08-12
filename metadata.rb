@@ -33,45 +33,45 @@ attribute 'haproxy/config/defaults/timeout/connect',
   :required => 'optional',
   :default => '20s'
 
-attribute "rs-haproxy/pools",
-  :display_name => "Load Balance Pools",
+attribute 'rs-haproxy/pools',
+  :display_name => 'Load Balance Pools',
   :description =>
-    "List of application pools for which the load balancer" +
-    " will create backend pools to answer website requests. The order of the" +
-    " items in the list will be preserved when answering to requests." +
-    " Last entry will be considered as the default backend and will answer for all" +
-    " requests. Application servers can provide any number of URIs or FQDNs (virtual host paths)" +
-    " to join corresponding server pool backends. The pool names can have only" +
-    " alphanumeric characters and underscores. Example: mysite, _api, default123",
+    'List of application pools for which the load balancer' \
+    ' will create backend pools to answer website requests. The order of the' \
+    ' items in the list will be preserved when answering to requests.' \
+    ' Last entry will be considered as the default backend and will answer for all' \
+    ' requests. Application servers can provide any number of URIs or FQDNs (virtual host paths)' \
+    ' to join corresponding server pool backends. The pool names can have only' \
+    ' alphanumeric characters and underscores. Example: mysite, _api, default123',
   :type => 'array',
-  :required => "recommended",
-  :default => ["default"]
+  :required => 'recommended',
+  :default => ['default']
 
 attribute 'rs-haproxy/incoming_port',
   :display_name => 'HAProxy HTTP Listen Port',
   :description => 'The port on which HAProxy listens for HTTP requests.',
   :required => 'optional'
 
-attribute "rs-haproxy/ssl_cert",
-  :display_name => "HAProxy SSL Certificate",
-  :description => "PEM formatted string containing SSL certificates and keys for SSL encryption." +
-    " Unset this to configure HAProxy without SSL encryption.",
-  :required => "optional"
+attribute 'rs-haproxy/ssl_cert',
+  :display_name => 'HAProxy SSL Certificate',
+  :description => 'PEM formatted string containing SSL certificates and keys for SSL encryption.' \
+    'Unset this to configure HAProxy without SSL encryption.',
+  :required => 'optional'
 
 attribute 'rs-haproxy/ssl_incoming_port',
   :display_name => 'HAProxy HTTPS Listen Port',
   :description => 'The port on which HAProxy listens for HTTPS requests',
   :required => 'optional'
 
-attribute "rs-haproxy/stats_uri",
-  :display_name => "Statistics URI",
+attribute 'rs-haproxy/stats_uri',
+  :display_name => 'Statistics URI',
   :description =>
-    "The URI for the load balancer statistics report page." +
-    " This page lists the current session, queued session, response error," +
-    " health check error, server status, etc. for each load balancer group." +
-    " Example: /haproxy-status",
-  :required => "optional",
-  :default => "/haproxy-status"
+    'The URI for the load balancer statistics report page.' \
+    ' This page lists the current session, queued session, response error,' \
+    ' health check error, server status, etc. for each load balancer group.' \
+    ' Example: /haproxy-status',
+  :required => 'optional',
+  :default => '/haproxy-status'
 
 attribute "rs-haproxy/stats_user",
   :display_name => "Statistics Page Username",

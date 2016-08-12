@@ -73,59 +73,59 @@ attribute 'rs-haproxy/stats_uri',
   :required => 'optional',
   :default => '/haproxy-status'
 
-attribute "rs-haproxy/stats_user",
-  :display_name => "Statistics Page Username",
+attribute 'rs-haproxy/stats_user',
+  :display_name => 'Statistics Page Username',
   :description =>
-    "The username that is required to access the load balancer" +
-    " statistics report page. Example: cred:STATS_USER",
-  :required => "optional"
+    'The username that is required to access the load balancer' \
+    ' statistics report page. Example: cred:STATS_USER',
+  :required => 'optional'
 
-attribute "rs-haproxy/stats_password",
-  :display_name => "Statistics Page Password",
+attribute 'rs-haproxy/stats_password',
+  :display_name => 'Statistics Page Password',
   :description =>
-    "The password that is required to access the load balancer statistics" +
-    " report page. Example: cred:STATS_PASSWORD",
-  :required => "optional"
+    'The password that is required to access the load balancer statistics' \
+    ' report page. Example: cred:STATS_PASSWORD',
+  :required => 'optional'
 
-attribute "rs-haproxy/session_stickiness",
-  :display_name => "Use Session Stickiness",
+attribute 'rs-haproxy/session_stickiness',
+  :display_name => 'Use Session Stickiness',
   :description =>
-    "Determines session stickiness. Set to 'True' to use session stickiness," +
-    " where the load balancer will reconnect a session to the last server it" +
-    " was connected to (via a cookie). Set to 'False' if you do not want to" +
-    " use sticky sessions; the load balancer will establish a connection" +
-    " with the next available server. Example: true",
-  :required => "optional",
-  :choice => ["true", "false"],
-  :default => "true"
+    'Determines session stickiness. Set to \'True\' to use session stickiness,' \
+    ' where the load balancer will reconnect a session to the last server it' \
+    ' was connected to (via a cookie). Set to \'False\' if you do not want to' \
+    ' use sticky sessions; the load balancer will establish a connection' \
+    ' with the next available server. Example: true',
+  :required => 'optional',
+  :choice => ['true', 'false'],
+  :default => 'true'
 
-attribute "rs-haproxy/health_check_uri",
-  :display_name => "Health Check URI",
+attribute 'rs-haproxy/health_check_uri',
+  :display_name => 'Health Check URI',
   :description =>
-    "The URI that the load balancer will use to check the health of a server." +
-    " It is only used for HTTP (not HTTPS) requests. Example: /",
-  :required => "optional",
-  :default => "/"
+    'The URI that the load balancer will use to check the health of a server.' \
+    ' It is only used for HTTP (not HTTPS) requests. Example: /',
+  :required => 'optional',
+  :default => '/'
 
-attribute "rs-haproxy/balance_algorithm",
-  :display_name => "Load Balancing Algorithm",
+attribute 'rs-haproxy/balance_algorithm',
+  :display_name => 'Load Balancing Algorithm',
   :description =>
-    "The algorithm that the load balancer will use to direct traffic." +
-    " Example: roundrobin",
-  :required => "optional",
-  :default => "roundrobin",
-  :choice => ["roundrobin", "leastconn", "source"]
+    'The algorithm that the load balancer will use to direct traffic.' \
+    ' Example: roundrobin',
+  :required => 'optional',
+  :default => 'roundrobin',
+  :choice => ['roundrobin', 'leastconn', 'source']
 
-attribute "rs-haproxy/schedule/enable",
+attribute 'rs-haproxy/schedule/enable',
   :display_name => 'Periodic Queries of Application Server',
   :description => 'Enable or disable periodic queries of application servers in the deployment.',
   :required => 'optional',
   :choice => ['true', 'false'],
   :default => 'true'
 
-attribute "rs-haproxy/schedule/interval",
+attribute 'rs-haproxy/schedule/interval',
   :display_name => 'Interval for Periodic Queries',
-  :description => 'Interval in minutes to run periodic queries of application servers in the deployment.' +
+  :description => 'Interval in minutes to run periodic queries of application servers in the deployment.' \
     ' Example: 15',
   :required => 'optional',
   :default => '15'
